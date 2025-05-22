@@ -24,7 +24,8 @@ logging.basicConfig(
 DEFAULT_CONFIG = {
   'HOST': '127.0.0.1',
   'PORT': '8080',
-  'CONSOLE_PRINT': '0'
+  'CONSOLE_PRINT': '0',
+  'RESPONSE_STATUS_CODE': '204'
 }
 
 def create_default_env():
@@ -39,10 +40,18 @@ def create_default_env():
 def load_config():
   create_default_env() # Create .env file if it doesn't exist
   
-  # Load environment variables
-  host = os.getenv('HOST', DEFAULT_CONFIG['HOST'])
-  port = os.getenv('PORT', DEFAULT_CONFIG['PORT'])
-  console_print = os.getenv('CONSOLE_PRINT', DEFAULT_CONFIG['CONSOLE_PRINT'])
+  try:
+    # Load environment variables
+    host = os.getenv('HOST', DEFAULT_CONFIG['HOST'])
+    port = os.getenv('PORT', DEFAULT_CONFIG['PORT'])
+    console_print = os.getenv('CONSOLE_PRINT', DEFAULT_CONFIG['CONSOLE_PRINT'])
+    response_status_code = int(os.getenv('RESPONSE_STATUS_CODE', DEFAULT_CONFIG['RESPONSE_STATUS_CODE']))
+  except response_status_code < 100 or response_status_code > 599:
+    logging.error("Error: RESPONSE_STATUS_CODE must be between 100 and 599")
+    sys.exit(1)
+  except Exception as e:
+    logging.error("Error in .env file: %s", e)
+    sys.exit(1)
 
   # Validate host
   if not host:
