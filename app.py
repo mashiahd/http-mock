@@ -24,7 +24,7 @@ logging.basicConfig(
 DEFAULT_CONFIG = {
   'HOST': '127.0.0.1',
   'PORT': '8080',
-  'CONSOLE_PRINT': '1'
+  'CONSOLE_PRINT': '0'
 }
 
 def create_default_env():
