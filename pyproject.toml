@@ -1,0 +1,16 @@
+[tool.pylint.format]
+max-module-lines = 2000
+max-line-length = 125
+
+[tool.pylint."MESSAGES CONTROL"]
+disable = [
+    "missing-function-docstring", 
+    "missing-method-docstring",
+    "missing-module-docstring",
+    "missing-final-newline",
+    "trailing-whitespace",
+    "bad-indentation",
+    "unused-argument",
+    "unused-variable",
+    "unused-import",
+    ]
