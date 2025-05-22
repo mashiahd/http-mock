@@ -44,6 +44,7 @@ The server can be configured through a `.env` file. A default configuration will
 HOST=127.0.0.1
 PORT=8080
 CONSOLE_PRINT=1
+RESPONSE_STATUS_CODE=204
 ```
 
 ## Usage
