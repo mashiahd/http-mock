@@ -121,6 +121,18 @@ def add_response_headers(headers={}):
     return decorated_function
   return decorator
 
+@app.route('/', methods=['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'])
+@add_response_headers({
+  'Cache-Control': 'no-cache, no-store, must-revalidate',
+  'Pragma': 'no-cache',
+  'Expires': '0'
+})
+def root():
+  app.logger.info('Request received: %s %s', request.method, '/')
+  if console_print == '1':
+    print(f"Request received: {request.method} /")
+  return '', response_status_code
+
 @app.route('/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'])
 @add_response_headers({
   'Cache-Control': 'no-cache, no-store, must-revalidate',
