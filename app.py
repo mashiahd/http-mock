@@ -145,7 +145,7 @@ def catch_all(path):
     print(f"Request received: {request.method} {path}")
   return '', response_status_code
 
-@app.route('/monitors/isalive', methods=['GET'])
+@app.route('/isalive', methods=['GET'])
 @add_response_headers({
   'Cache-Control': 'no-cache, no-store, must-revalidate',
   'Pragma': 'no-cache',
