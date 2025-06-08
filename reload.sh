@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo service http-monitor stop
+sudo service http-mock stop
 git pull
-sudo service http-monitor start
-sudo service http-monitor status
+sudo service http-mock start
+sudo service http-mock status
